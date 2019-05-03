@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block profile %}
+{% endblock %}
+
+{% block content %}
+<div class="new-box">
+    <div class="small-nav">
+        <img src="{% static 'haribo.jpg' %}" class="small-img">
+        <div class="small-name">
+            <p><strong>haribo</strong></p>
+            <p><strong>･･･</strong></p>
+        </div>
+    </div>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="new">{{ form.as_p }}</div>
+        <div class="submit">
+            <i class="fas fa-chevron-left"></i>
+            <p><strong>새 게시물</strong></p>
+            <button type='submit'>공유</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

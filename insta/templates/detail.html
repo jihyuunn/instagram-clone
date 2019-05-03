@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class = "detail-box">
+        <div style="height: 500px;">
+            <img src="{{ thispost.img.url }}" class = "detail-img">
+        </div>
+        <div class = "comment">
+            <div class="comment-icons">
+                <img src="{% static 'icons.png' %}">
+                <img src="{% static 'mark.png' %}">
+            </div>
+            <div class="comment-box">
+                <div>
+                    <p><strong>{{ thispost.user }}</strong> {{ thispost.content }}</p>
+                </div>
+                <div>
+                    {% for comment in thispost.comments.all %}
+                    <p><strong>haribous</strong> {{ comment.content }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="text-box">
+                <form method="POST">
+                {% csrf_token %}
+                <div class="box">{{ form.as_p }}
+                <button type="submit">게시</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
